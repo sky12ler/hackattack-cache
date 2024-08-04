@@ -1,47 +1,21 @@
 import React from "react";
 import styled from "styled-components";
-import lighthouse from "../assets/lighthouse.png";
-import { BiWorld } from "react-icons/bi";
-import { BsHeadphones, BsPerson } from "react-icons/bs";
+
+
 export default function Offer() {
-  const data = [
-    {
-      text: "Best Travel Guide Always for your Services",
-      icon: <BsPerson />,
-      color: "red",
-    },
-    {
-      text: "World Class Services Provided For You",
-      icon: <BiWorld />,
-      color: "green",
-    },
-    {
-      text: "24/7 Strong Customer Support",
-      icon: <BsHeadphones />,
-      color: "yellow",
-    },
-  ];
   return (
     <Section id="offer">
-      <div className="image">
-        <img src={lighthouse} alt="lighthouse" />
-      </div>
-      <div className="content">
-        <div className="title">
-          <h1>We are Offering in Total 793 Tours Across the World</h1>
-        </div>
-        <ul className="list">
-          {data.map(({ text, icon, color }) => {
-            return (
-              <li key={text}>
-                <div className={`icon ${color}`}>{icon}</div>
-                <div className="text">
-                  <h3>{text}</h3>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
+      <div className="map">
+        {/* Placeholder for Google Maps integration */}
+        <p>Google Map will be integrated here.</p>
+        {/* Example iframe for a placeholder map */
+        <iframe
+        src="https://www.google.com/maps/embed?pb=..."
+        allowFullScreen
+        loading="lazy"
+        title="Google Map"
+      ></iframe>}
+        
       </div>
     </Section>
   );
@@ -50,81 +24,47 @@ export default function Offer() {
 const Section = styled.section`
   margin: 8rem 0;
   display: flex;
-  gap: 5rem;
-  .image {
-    img {
-      height: 35rem;
+  justify-content: center;
+  align-items: center;
+
+  .map {
+    width: 500%;
+    height: 1000px;
+    00px; /* Default height for desktop */
+    position: relative;
+    background-color: #f5f5f5; /* Optional: Light gray background */
+    border-radius: 8px; /* Optional: Rounded corners */
+
+    p {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #333;
+      margin-top: 1rem;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
     }
   }
-  .content {
-    .title {
-      margin: 2rem 0;
-      h1 {
-        font-size: 3rem;
-      }
-    }
-    .list {
-      list-style-type: none;
-      li {
-        display: flex;
-        align-items: center;
-        gap: 4rem;
-        margin: 4rem 0;
-        .icon {
-          padding: 0.5rem;
-          border-radius: 1rem;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-size: 2rem;
-        }
-        .red {
-          background-color: #ff3010aa;
-          color: white;
-        }
-        .green {
-          background-color: #65ce5455;
-          color: #65ce54;
-        }
-        .yellow {
-          background-color: #ffc01e55;
-          color: #ffc01e;
-        }
-        .text {
-          h3 {
-            font-size: 1.5rem;
-          }
-        }
-      }
-    }
-  }
-  @media screen and (min-width: 280px) and (max-width: 1080px) {
-    flex-direction: column;
+
+  @media screen and (max-width: 768px) {
     margin: 5rem 1rem;
-    gap: 2rem;
-    .image {
-      img {
-        max-inline-size: 100%;
-        block-size: auto;
+
+    .map {
+      height: 300px; /* Adjust height for smaller screens */
+      p {
+        font-size: 1rem;
       }
     }
-    .content {
-      .title {
-        h1 {
-          font-size: 2rem;
-          text-align: center;
-        }
-      }
-      .list {
-        li {
-          gap: 1rem;
-          margin: 2rem 0;
-          .text {
-            h3 {
-              font-size: 1rem;
-            }
-          }
-        }
+  }
+
+  @media screen and (max-width: 480px) {
+    .map {
+      height: 250px; /* Further adjust height for very small screens */
+      p {
+        font-size: 0.9rem;
       }
     }
   }

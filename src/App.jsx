@@ -8,7 +8,8 @@ import Offer from "./components/Offer";
 import ScrollToTop from "./components/ScrollToTop";
 import Services from "./components/Services";
 import Testimonial from "./components/Testimonial";
-import Tours from "./components/Tours";
+import Location from "./components/location";
+
 
 export default function App() {
   return (
@@ -19,10 +20,12 @@ export default function App() {
       <Services />
       <Destinations />
       <Offer />
-      <Tours />
+      <Location />
+      
       <Testimonial />
       <DownloadApp />
       <Footer />
     </div>
   );
 }
+

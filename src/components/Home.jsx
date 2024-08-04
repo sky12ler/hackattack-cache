@@ -13,32 +13,18 @@ export default function Home() {
         <div className="info">
           <h1>It's Time To</h1>
           <h1>Explore The World</h1>
-          <Button text="Plan Your Trip" />
+            <h2>Plan Your Trip</h2>
         </div>
         <div className="planner">
           <form>
             <div className="row">
-              <label>Destinations</label>
-              <select>
-                <option>Arab Egypt</option>
-                <option>Udaipur India</option>
-              </select>
+              <h2>No idea for planning?</h2>
+              
             </div>
-            <div className="row">
-              <label>Check In</label>
-              <input type="date" />
-            </div>
-            <div className="row">
-              <label>Price Range</label>
-              <input
-                type="text"
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-              />
-            </div>
-            <div className="row">
-              <Button text="Discover More" />
-            </div>
+            <h2>Let's chat with our virtual tour guide.</h2>
+
+            
+            
           </form>
         </div>
       </div>

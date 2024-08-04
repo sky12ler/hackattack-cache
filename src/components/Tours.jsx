@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { BsFillStarFill } from "react-icons/bs";
 import tour1 from "../assets/tour1.png";
@@ -9,6 +9,8 @@ import vector2 from "../assets/vector2.png";
 import ellipse from "../assets/ellipse.png";
 
 export default function Tours() {
+  const [selectedTour, setSelectedTour] = useState(null);
+  
   const data = [
     {
       image: tour1,
@@ -29,16 +31,25 @@ export default function Tours() {
       reviews: "5k Reviews",
     },
   ];
+
+  const handlePopupOpen = (tour) => {
+    setSelectedTour(tour);
+  };
+
+  const handlePopupClose = () => {
+    setSelectedTour(null);
+  };
+
   return (
     <Section id="tour">
-      <h2>Choose Your Destination</h2>
+      <h2>Here's Your Destination</h2>
       <img src={ellipse} alt="ellipse" className="ellipse" />
       <div className="tours">
-        {data.map(({ image, title, price, reviews }, index) => {
+        {data.map((tour, index) => {
           return (
-            <div className="tour" key={title}>
+            <div className="tour" key={tour.title} onClick={() => handlePopupOpen(tour)}>
               <div className="image">
-                <img src={image} alt="tour" />
+                <img src={tour.image} alt="tour" />
                 {index === 1 && (
                   <div className="vectors">
                     <img src={vector1} alt="vector" className="vector1" />
@@ -48,9 +59,9 @@ export default function Tours() {
               </div>
               <div className="info">
                 <div className="details">
-                  <h4>{title}</h4>
+                  <h4>{tour.title}</h4>
                   <div className="price-details">
-                    <span className="price">${price}</span>
+                    <span className="price">${tour.price}</span>
                     <div className="reviews">
                       <div className="stars">
                         <BsFillStarFill />
@@ -59,16 +70,26 @@ export default function Tours() {
                         <BsFillStarFill />
                         <BsFillStarFill />
                       </div>
-                      <span className="review">{reviews}</span>
+                      <span className="review">{tour.reviews}</span>
                     </div>
                   </div>
                 </div>
-                <button>+</button>
               </div>
             </div>
           );
         })}
       </div>
+      {selectedTour && (
+        <PopupOverlay onClick={handlePopupClose}>
+          <PopupContent onClick={(e) => e.stopPropagation()}>
+            <img src={selectedTour.image} alt="tour" className="popup-image" />
+            <h4>{selectedTour.title}</h4>
+            <p className="price">${selectedTour.price}</p>
+            <p className="reviews">{selectedTour.reviews}</p>
+            <button onClick={handlePopupClose}>Close</button>
+          </PopupContent>
+        </PopupOverlay>
+      )}
     </Section>
   );
 }
@@ -95,6 +116,7 @@ const Section = styled.section`
     justify-content: center;
     .tour {
       position: relative;
+      cursor: pointer;
       &:nth-of-type(2) {
         transform: translateY(-150px);
       }
@@ -128,14 +150,6 @@ const Section = styled.section`
         gap: 1rem;
         padding: 1rem;
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        button {
-          padding: 0.5rem 0.7rem;
-          background-color: var(--primary-color);
-          border: none;
-          font-size: 1.1rem;
-          color: white;
-          cursor: pointer;
-        }
         .details {
           display: flex;
           flex-direction: column;
@@ -194,5 +208,47 @@ const Section = styled.section`
         }
       }
     }
+  }
+`;
+
+const PopupOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+`;
+
+const PopupContent = styled.div`
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+
+  .popup-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
   }
 `;

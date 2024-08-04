@@ -4,7 +4,7 @@ import { BsPerson } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdClose } from "react-icons/md";
 import { IoSearchOutline } from "react-icons/io5";
-import Logo from "../assets/logo.png";
+import Logo from "../assets/logo.jpeg";
 export default function Navbar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const html = document.querySelector("html");
@@ -12,7 +12,7 @@ export default function Navbar() {
   return (
     <Container state={isNavOpen ? 1 : 0}>
       <div className="brand">
-        <img src={Logo} alt="logo" />
+        <h2>Levar- Your Travel Partner</h2>
       </div>
       <div className="toggle">
         {isNavOpen ? (

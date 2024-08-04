@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import cuba from "../assets/cuba.png";
+import malaysia from "../assets/malaysia.jpeg";
 import paris from "../assets/paris.png";
 import japan from "../assets/japan.png";
 import Button from "./Button";
 export default function Destinations() {
   const data = [
     {
-      name: "Cuba City",
-      image: cuba,
+      name: "Malaysia",
+      image: malaysia,
     },
     {
       name: "Paris",
@@ -26,10 +26,9 @@ export default function Destinations() {
           Top <span>Destinations</span> In The World
         </h2>
         <p>
-          It is a long established fact that a reader will be distracted by the
-          readable content of a page when looking at its layout from it.
+          Too boring to stay home, too lazy to plan a trip, let's not stop to enjoy a travelling, we are the virtual tour guide to help you. Play fun just with one step.
         </p>
-        <Button text="Discover More" />
+        
       </div>
 
       <div className="destinations">
